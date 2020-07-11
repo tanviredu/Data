@@ -1,0 +1,11 @@
+<h1>Edit Order</h1>
+
+<h2>{{ note }}</h2>
+
+<!-- we send the pizza object with the form so we can use its if
+if we hit the post this object of the id will be edited other wise it
+will just render the form with the pizza object -->
+<form action="{% url 'edit_order' pizza.id %}" method="post">
+  {% csrf_token %} {{ pizzaform }}
+  <input type="submit" value="Edit Order" />
+</form>

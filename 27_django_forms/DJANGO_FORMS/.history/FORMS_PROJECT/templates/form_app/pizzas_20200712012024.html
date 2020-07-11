@@ -1,0 +1,12 @@
+{% load crispy_forms_tags %}
+<h1>Order Pizzas</h1>
+
+<h2>{{ note }}</h2>
+
+<form action="{% url 'pizzas' %}" method="POST">
+  {% csrf_token %} {{ formset.management_form | crispy }} {% for d in formset %}
+  {% crispy d %}
+  <br /><br />
+  {% endfor %}
+  <input type="submit" value="Order Pizzas" />
+</form>

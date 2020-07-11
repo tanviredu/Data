@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load crispy_forms_tags %}
+<h1>This is the Order page</h1>
+
+{% block content %}
+<div class="container">
+  {% if note %}
+  <div class="alert alert-primary" role="alert">
+    {{ note }}
+  </div>
+  {% endif %}
+  <form action="{% url 'order' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{pizzaform | crispy}}
+    <hr />
+    <input type="submit" class="btn btn-danger btn-lg" value="Order Pizza" />
+  </form>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br /><br />
+  Want more than one pizza?
+  <form action="{% url 'pizzas' %}" method="get">
+    {% csrf_token %} {{ multiple_form | crispy }}
+    <input type="submit" value="Get Pizzas" class="btn btn-outline-warning" />
+  </form>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br /><br />
+{% endblock %}

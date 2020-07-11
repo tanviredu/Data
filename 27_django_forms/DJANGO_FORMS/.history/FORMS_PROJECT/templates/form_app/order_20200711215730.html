@@ -1,0 +1,7 @@
+{% extends "base.html "%} {% load crispy_forms_tags %}
+<h1>This is the Order page</h1>
+
+<form action="{% url 'order' %}" method="POST">
+  {% csrf_token %} {{pizzaform | crispy}}
+  <input type="submit" class="btn btn-danger btn-lg" value="Order Pizza" />
+</form>

@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} {% block content %}
+<div class="container">
+  <h1>Order Pizzas</h1>
+  <h2>{{ note }}</h2>
+
+  <form action="{% url 'pizzas' %}" method="post">
+    {% csrf_token %} {{ formset.management_form | crispy }} {% for f in formset
+    %} {{ f }}
+    <br /><br />
+    {% endfor %}
+    <input type="submit" class="btn btn-danger btn-lg" value="Order Pizzas" />
+  </form>
+</div>
+{% endblock %}
